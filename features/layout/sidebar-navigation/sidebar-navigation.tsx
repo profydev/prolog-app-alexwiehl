@@ -1,19 +1,19 @@
-import { useRouter } from "next/router";
-import { useContext, useState } from "react";
-import { Routes } from "@config/routes";
-import classNames from "classnames";
-import { NavigationContext } from "./navigation-context";
-import { MenuItemButton } from "./menu-item-button";
-import { MenuItemLink } from "./menu-item-link";
-import { Button } from "@features/ui";
-import styles from "./sidebar-navigation.module.scss";
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
+import { Routes } from '@config/routes';
+import classNames from 'classnames';
+import { NavigationContext } from './navigation-context';
+import { MenuItemButton } from './menu-item-button';
+import { MenuItemLink } from './menu-item-link';
+import { Button } from '@features/ui';
+import styles from './sidebar-navigation.module.scss';
 
 const menuItems = [
-  { text: "Projects", iconSrc: "/icons/projects.svg", href: Routes.projects },
-  { text: "Issues", iconSrc: "/icons/issues.svg", href: Routes.issues },
-  { text: "Alerts", iconSrc: "/icons/alert.svg", href: Routes.alerts },
-  { text: "Users", iconSrc: "/icons/users.svg", href: Routes.users },
-  { text: "Settings", iconSrc: "/icons/settings.svg", href: Routes.settings },
+  { text: 'Projects', iconSrc: '/icons/projects.svg', href: Routes.projects },
+  { text: 'Issues', iconSrc: '/icons/issues.svg', href: Routes.issues },
+  { text: 'Alerts', iconSrc: '/icons/alert.svg', href: Routes.alerts },
+  { text: 'Users', iconSrc: '/icons/users.svg', href: Routes.users },
+  { text: 'Settings', iconSrc: '/icons/settings.svg', href: Routes.settings },
 ];
 
 export function SidebarNavigation() {
@@ -38,8 +38,8 @@ export function SidebarNavigation() {
           <img
             src={
               isSidebarCollapsed
-                ? "/icons/logo-small.svg"
-                : "/icons/logo-large.svg"
+                ? '/icons/logo-small.svg'
+                : '/icons/logo-large.svg'
             }
             alt="logo"
             className={styles.logo}
@@ -50,8 +50,8 @@ export function SidebarNavigation() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={isMobileMenuOpen ? "/icons/close.svg" : "/icons/menu.svg"}
-              alt={isMobileMenuOpen ? "close menu" : "open menu"}
+              src={isMobileMenuOpen ? '/icons/close.svg' : '/icons/menu.svg'}
+              alt={isMobileMenuOpen ? 'close menu' : 'open menu'}
               className={styles.menuIcon}
             />
           </Button>
@@ -83,14 +83,17 @@ export function SidebarNavigation() {
               text="Support"
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
-              onClick={() => alert("Support")}
+              onClick={() => alert('Support')}
             />
             <MenuItemButton
               text="Collapse"
               iconSrc="/icons/arrow-left.svg"
               isCollapsed={isSidebarCollapsed}
               onClick={() => toggleSidebar()}
-              className={styles.collapseMenuItem}
+              className={classNames(
+                styles.collapseMenuItem,
+                isSidebarCollapsed && styles.isSidebarCollapsed,
+              )}
             />
           </ul>
         </nav>
